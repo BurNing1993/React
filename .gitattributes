@@ -2,3 +2,4 @@
 * text=auto
 ##ignore this file##
 /.idea/
+/*/node_modules/
