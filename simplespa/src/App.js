@@ -4,8 +4,11 @@ import './App.css';
 class App extends Component {
   render() {
       return (
-        <div>
-          qq
+          <div className="columns">
+          <div className="column">First column</div>
+          <div className="column">Second column</div>
+          <div className="column">Third column</div>
+          <div className="column">Fourth</div>
         </div>
     );
   }
