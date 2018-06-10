@@ -42,7 +42,8 @@
     index.js
     import 'material-design-lite/material.min.js';
     import 'material-design-lite/material.min.css';
-    index.html<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    index.html
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 >Bootstrap
 
