@@ -16,7 +16,7 @@ class Page2 extends Component {
                                 <tbody>
                                     <tr>
                                         <td >
-                                            <i class="fa fa-male" aria-hidden="true"></i>
+                                            <i className="fa fa-male" aria-hidden="true"></i>
                                             性别：
                                     </td>
                                         <td >
@@ -25,7 +25,7 @@ class Page2 extends Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                                            <i className="fa fa-birthday-cake" aria-hidden="true"></i>
                                             出生
                                 </td>
                                         <td>
@@ -34,7 +34,7 @@ class Page2 extends Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <i class="fa fa-school" aria-hidden="true"></i>
+                                            <i className="fa fa-school" aria-hidden="true"></i>
                                             毕业院校
                                 </td>
                                         <td>
@@ -43,7 +43,7 @@ class Page2 extends Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                            <i className="fa fa-graduation-cap" aria-hidden="true"></i>
                                             学历
                                 </td>
                                         <td>
@@ -52,7 +52,7 @@ class Page2 extends Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <i class="fa fa-mobile-alt" aria-hidden="true"></i>
+                                            <i className="fa fa-mobile-alt" aria-hidden="true"></i>
                                             手机
                                 </td>
                                         <td>
@@ -61,7 +61,7 @@ class Page2 extends Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                            <i className="fa fa-envelope" aria-hidden="true"></i>
                                             邮箱
                                 </td>
                                         <td>
@@ -70,7 +70,7 @@ class Page2 extends Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <i class="fa fa-github" aria-hidden="true"></i>
+                                            <i className="fa fa-github" aria-hidden="true"></i>
                                             Github
                                 </td>
                                         <td>
