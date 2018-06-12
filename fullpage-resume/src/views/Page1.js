@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 class Page1 extends Component {
-   render() {
-   return (
+    render() {
+        return (
             <nav className="navbar navbar-light bg-light">
-            <span className="navbar-brand mb-0 h1">Navbar</span>
-        </nav>
+                <span className="navbar-brand mb-0 h1">Navbar</span>
+            </nav>
         );
     }
- }
- export default Page1;
+}
+export default Page1;
