@@ -2,26 +2,26 @@ import React, { Component } from 'react';
 import './App.css';
 import $ from 'jquery';
 import 'fullpage.js';
+import 'fullpage.js/dist/jquery.fullpage.css';
+import 'fullpage.js/dist/jquery.fullpage.js';
+import Page1 from './views/Page1.js';
 
 class App extends Component {
   componentWillMount() {
     $(document).ready(function () {
       $('#fullpage').fullpage({
-        anchors: ['page1', 'page2', 'page3', 'page4'],
-        navigation: true,
-        navigationPosition: 'right',
-        navigationTooltips: ['page1', 'page2', 'page3', 'page4'],
+        navigation:true,
+        navigationTooltips: ['page1', 'page2', 'page3','page4']
       });
     });
   }
   render() {
     return (
-     
       <div id="fullpage">
-        <div className="section">Some section1</div>
-        <div className="section">Some section2</div>
-        <div className="section">Some section3</div>
-        <div className="section">Some section4</div>
+        <div className="section"><Page1/></div>
+        <div className="section"><Page1/></div>
+        <div className="section"><Page1/></div>
+        <div className="section"><Page1/></div>
       </div>
     );
   }
