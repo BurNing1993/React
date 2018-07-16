@@ -18,6 +18,7 @@
             "prefix": "react",
             "body": [
                 "import React, { Component } from 'react';",
+                "",
                 "class $1 extends Component {",
                 "   render() {",
                 "   return (",

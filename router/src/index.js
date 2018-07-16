@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import Home from './Home';
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import App from './App'
+// import ParamsExample from './ParamsExample'
+// import CustomLinkExample from './CustomLinkExample'
+// import PreventingTransitionsExample from './PreventingTransitionsExample'
+// import NoMatchExample from './NoMatchExample'
+import RecursiveExample from './RecursiveExample'
+// import AuthExample from './AuthExample'
 
-ReactDOM.render(  <Router>
-    <div>
 
-        <Route exact path="/" component={App} />
-        <Route path="/home" component={Home} />
-    </div>
-</Router>, document.getElementById('root'));
+ReactDOM.render( 
+    <RecursiveExample/>
+    ,document.getElementById('root'));
 registerServiceWorker();
