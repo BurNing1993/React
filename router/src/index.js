@@ -7,11 +7,13 @@ import registerServiceWorker from './registerServiceWorker';
 // import CustomLinkExample from './CustomLinkExample'
 // import PreventingTransitionsExample from './PreventingTransitionsExample'
 // import NoMatchExample from './NoMatchExample'
-import RecursiveExample from './RecursiveExample'
+import AnimationExample from './AnimationExample'
+// import SidebarExample from './SidebarExample'
+// import RecursiveExample from './RecursiveExample'
 // import AuthExample from './AuthExample'
 
 
 ReactDOM.render( 
-    <RecursiveExample/>
+    <AnimationExample/>
     ,document.getElementById('root'));
 registerServiceWorker();
