@@ -37,10 +37,6 @@ class Page6 extends Component {
                                 </div>
                             </div>
                             <div className="card-body">
-                                <h5 className="card-title">其他</h5>
-                                <span>IntelliJ IDEA</span><div className="progress">
-                                    <div className="progress-bar" role="progressbar" style={{ width: '75%' }} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                                </div>
                                 <span>微信小程序</span><div className="progress">
                                     <div className="progress-bar" role="progressbar" style={{ width: '60%' }} aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
                                 </div>
