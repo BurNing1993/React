@@ -12,8 +12,8 @@ class TodoList extends Component {
         this.handleAddItem = this.handleAddItem.bind(this);
         this.handleDeleteItem = this.handleDeleteItem.bind(this)
     }
-    handleInputChange(e) {
-        const value=e.target.value
+    handleInputChange() {
+        const value=this.input.value
         this.setState(()=>({
             inputValue:value
         }))
@@ -58,6 +58,7 @@ class TodoList extends Component {
                                 aria-describedby="basic-addon2"
                                 value={this.state.inputValue}
                                 onChange={this.handleInputChange}
+                                ref={(input)=>{this.input=input}}
                             />
                             <div className="input-group-append">
                                 <button className="btn btn-outline-primary" type="button" onClick={this.handleAddItem}>Add</button>

@@ -2,6 +2,7 @@
   "name": "resume",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "http://BurNing1993.github.io",
   "dependencies": {
     "bootstrap": "^4.1.1",
     "jquery": "^3.3.1",

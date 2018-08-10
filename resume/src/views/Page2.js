@@ -1,80 +1,84 @@
 import React, { Component } from 'react';
 import './page.css';
+import  avatar from '../assets/img/avatar.png';
+var imgStyle = {
+   height:'150px'
+  };
 
 class Page2 extends Component {
     render() {
         return (
-            <div className="container">
+            <div className="container-fluid">
                 <div className="col-sm-8  offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
                     <div className="card page">
-                        <img className="card-img-top" src="http://placehold.it/500x230" alt="Card cap" />
+                        <img className="card-img-top center" src={avatar} alt="Card cap" style={imgStyle}/>
                         <div className="card-body">
-                            <h5 className="card-title">
-                                伍大洪
-                    </h5>
+                            <h5 className="card-title text-justify">
+                                程 飞
+                            </h5>
                             <table className="table table-hover">
                                 <tbody>
                                     <tr>
-                                        <td >
+                                        <td>
                                             <i className="fa fa-male" aria-hidden="true"></i>
                                             性别：
-                                    </td>
-                                        <td >
+                                        </td>
+                                        <td>
                                             男
-                                </td>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <i className="fa fa-birthday-cake" aria-hidden="true"></i>
-                                            出生
-                                </td>
+                                            出生年月
+                            </td>
                                         <td>
                                             1993/9
-                                </td>
+                            </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <i className="fa fa-school" aria-hidden="true"></i>
                                             毕业院校
-                                </td>
+                            </td>
                                         <td>
-                                            西南大学
-                                </td>
+                                            重庆邮电大学
+                            </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <i className="fa fa-graduation-cap" aria-hidden="true"></i>
                                             学历
-                                </td>
+                            </td>
                                         <td>
                                             本科
-                                </td>
+                            </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <i className="fa fa-mobile-alt" aria-hidden="true"></i>
                                             手机
-                                </td>
+                            </td>
                                         <td>
-                                            110
-                                </td>
+                                            19940764448
+                            </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <i className="fa fa-envelope" aria-hidden="true"></i>
                                             邮箱
-                                </td>
+                            </td>
                                         <td>
-                                            110@qq.com
-                                </td>
+                                            786678257@qq.com
+                            </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <i className="fa fa-github" aria-hidden="true"></i>
                                             Github
-                                </td>
+                            </td>
                                         <td>
-                                            <a href="">@QQQ</a>
+                                            <a href="https://github.com/BurNing1993">@BurNing1993</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -85,5 +89,4 @@ class Page2 extends Component {
             </div>
         );
     }
-}
-export default Page2;
+} export default Page2;
