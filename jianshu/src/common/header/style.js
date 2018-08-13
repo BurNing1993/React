@@ -20,7 +20,7 @@ export const Logo = styled.a.attrs(
     background-size:contain;
 `;
 
-export const Nav=styled.div`
+export const Nav = styled.div`
     width:960px;
     height:100%;
     margin:0 auto;
@@ -28,7 +28,7 @@ export const Nav=styled.div`
     box-sizing:border-box;
 `;
 
-export const NavItem=styled.div`
+export const NavItem = styled.div`
     &.left{
         float:left;
     }
@@ -45,33 +45,69 @@ export const NavItem=styled.div`
     color:#333;
 `;
 
-export const NavSearch =styled.input.attrs({
-    placeholder:'搜索'
+export const SearchWrapper=styled.div`
+    position:relative;
+    float:left;
+
+    .iconfont{
+        position:absolute;
+        right:5px;
+        bottom:5px;
+        width:30px;
+        height:30px;
+        line-height:30px;
+        border-radius:15px;
+        text-align:center;
+        &.focused{
+            background:#777;
+            color:#fff;
+        }
+    }
+`;
+
+export const NavSearch = styled.input.attrs({
+    placeholder: '搜索'
 })`
-    width:160px;
+    width:200px;
     height:38px;
     border:none;
     outline:none;
     border-radius:19px;
     margin-top:9px;
     margin-left:20px;
-    padding:0 20px;
+    padding:0 35px 0 20px;
+    color:#777;
     box-sizing:border-box;
     background:#eee;
     font-size:14px
     &::placeholder {
 		color: #999;
 	}
+    &.focused{
+        width:260px;
+    }
+        &.slide-enter{
+        transition:all .2s ease-out;
+    }
+    &.slide-enter-active{
+        width:260px;
+    }
+    &.slide-exit{
+        transition:all .2s ease-out;
+    }
+    &.slide-exit-active{
+        width:200px;
+    }
 `;
 
-export const Addition=styled.div`
-position:absolute;
-right:0;
-top:0;
-height:56px;
+export const Addition = styled.div`
+    position:absolute;
+    right:0;
+    top:0;
+    height:56px;
 `;
 
-export const Button=styled.div`
+export const Button = styled.div`
     float:right;
     line-height:38px;
     margin-top:9px;
