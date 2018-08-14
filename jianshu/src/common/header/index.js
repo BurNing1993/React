@@ -8,12 +8,54 @@ import {
     NavSearch,
     Addition,
     Button,
-    SearchWrapper
+    SearchWrapper,
+    SearchInfo,
+    SearchInfoTitle,
+    SearchInfoSwitch,
+    SearchInfoItem,
+    SearchInfoList
 } from './style'
 import { CSSTransition } from 'react-transition-group';
+import { actionCreators } from './store';
 
 class Header extends Component {
+
+    getListArea() {
+        const { focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
+        const newList = list.toJS();
+        const pageList = [];
+        if (newList.length) {
+            for (let i = (page - 1) * 10; i < page * 10; i++) {
+                pageList.push(
+                    <SearchInfoItem key={i}>{newList[i]}</SearchInfoItem>
+                )
+            }
+        }
+        if (focused || mouseIn) {
+            return (
+                <SearchInfo
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    <SearchInfoTitle>
+                        热门搜索
+                <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage,this.spinIcon)}>
+                <i ref={(icon)=>{this.spinIcon=icon}} className='iconfont spin'>&#xe786;</i>
+                            换一批
+                </SearchInfoSwitch>
+                    </SearchInfoTitle>
+                    <SearchInfoList>
+                        {pageList}
+                    </SearchInfoList>
+                </SearchInfo>
+            )
+        } else {
+            return null;
+        }
+    }
+
     render() {
+        const { focused,list, handleInputFocus, handleInputBlur } = this.props;
         return (
             <div>
                 <HeaderWrapper>
@@ -29,16 +71,17 @@ class Header extends Component {
                         <SearchWrapper>
                             <CSSTransition
                                 timeout={200}
-                                in={this.props.focused}
+                                in={focused}
                                 classNames="slide"
-                            >   
-                            <NavSearch
-                                className={this.props.focused ? 'focused' : ''}
-                                onFocus={this.props.handleInputFocus}
-                                onBlur={this.props.handleInputBlur}
-                            ></NavSearch>
+                            >
+                                <NavSearch
+                                    className={focused ? 'focused' : ''}
+                                    onFocus={()=>handleInputFocus(list)}
+                                    onBlur={handleInputBlur}
+                                ></NavSearch>
                             </CSSTransition>
-                            <i className={this.props.focused ? 'focused iconfont' : 'iconfont'}>&#xe601;</i>
+                            <i className={focused ? 'focused iconfont zoom' : 'iconfont zoom'}>&#xe601;</i>
+                            {this.getListArea()}
                         </SearchWrapper>
                     </Nav>
                     <Addition>
@@ -53,27 +96,52 @@ class Header extends Component {
     }
 }
 
-const mapStateToProps=(state)=>{
+
+const mapStateToProps = (state) => {
     return {
-        focused:state.focused
+        focused: state.getIn(['header', 'focused']),
+        list: state.getIn(['header', 'list']),
+        page: state.getIn(['header', 'page']),
+        totalPage: state.getIn(['header', 'totalPage']),
+        mouseIn: state.getIn(['header', 'mouseIn'])
+        //  state.get('header').get('focused')
     }
 }
 
-const mapDispathToProps=(dispatch)=>{
-    return{
-        handleInputFocus(){
-            const action={
-                type:'search_focus'
-            };
-            dispatch(action);
+const mapDispathToProps = (dispatch) => {
+    return {
+        handleInputFocus(list) {
+            (list.size===0)&&dispatch(actionCreators.getList());
+            // if (list.size===0) {
+            //     dispatch(actionCreators.getList());
+            // }
+            dispatch(actionCreators.searchFocus());
         },
-        handleInputBlur(){
-            const action={
-                type:'search_blur'
-            };
-            dispatch(action);
+        handleInputBlur() {
+            dispatch(actionCreators.searchBlur());
+        },
+        handleMouseEnter() {
+            dispatch(actionCreators.mouseEnter());
+        },
+        handleMouseLeave() {
+            dispatch(actionCreators.mouseLeave());
+        },
+        handleChangePage(page, totalPage,spin) {
+            let originAngle=spin.style.transform.replace(/[^0-9]/ig,'');
+            if(originAngle){
+                originAngle=parseInt(originAngle,10);
+            }else{
+                originAngle=0;
+            }
+            spin.style.transform='rotate('+(originAngle+360)+'deg)';
+            if (page < totalPage) {
+                dispatch(actionCreators.changePage(page + 1))
+            } else {
+                dispatch(actionCreators.changePage(1))
+            }
+
         }
     }
 }
 
-export default connect(mapStateToProps,mapDispathToProps)(Header);
+export default connect(mapStateToProps, mapDispathToProps)(Header);
