@@ -33,6 +33,34 @@
         }
     }
 
+>VScode react-redux-component snippets
+
+    {
+        "Print to console": {
+            "prefix": "react-redux-component",
+            "body": [
+                "import React, { Component } from 'react';",
+                "import { connect } from 'react-redux';",
+                "",
+                "class $1 extends Component {",
+                "   render() {",
+                "   return (",
+                "			$2"
+                "		);",
+                "	}",
+                " }",
+                "const mapStateToProps = (state) => ({",
+                "",
+                "})",
+                "const mapDispathToProps = (dispatch) => ({",
+                "",
+                "})",
+                " export default connect(mapStateToProps, mapDispathToProps)($1);",
+                ""
+            ],
+            "description": "Log output to console"
+        }
+    }
 
 > material
 
