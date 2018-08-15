@@ -1,31 +1,31 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import {
-    TopicWrapper,
-    TopicItem
-}from '../style'
+    RecommendWrapper,
+    RecommendItem
+} from '../style'
 
-class Recommend extends Component {
-   render() {
-   return (
-            <TopicWrapper>
-                <TopicItem>
-                    <img src="//upload.jianshu.io/collections/images/13/%E5%95%8A.png?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64" alt=""/>
-                    
-                    旅行
-                </TopicItem>
-            </TopicWrapper>
+class Recommend extends PureComponent {
+    render() {
+        const { list } = this.props;
+        return (
+            <RecommendWrapper>
+                {
+                    list.map((item) => (
+                        <RecommendItem
+                            key={item.get('id')}
+                            imgUrl={item.get('imgUrl')}>
+                        </RecommendItem>
+                    ))
+                }
+            </RecommendWrapper>
         );
     }
- }
-const mapStateToProps = (state) => {
-return {
-
-    }
 }
-const mapDispathToProps = (dispatch) => {
-    return {
-
-    }
-}
- export default connect(mapStateToProps, mapDispathToProps)(Recommend);
+const mapStateToProps = (state) => ({
+    list: state.getIn(['home', 'recommendList'])
+})
+const mapDispathToProps = (dispatch) =>({
+    
+})
+export default connect(mapStateToProps, mapDispathToProps)(Recommend);
