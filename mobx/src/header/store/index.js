@@ -8,5 +8,4 @@ class HeaderStore {
         this.header=header;
     }
 }
-const headerStore= new  HeaderStore()
-export {headerStore} ;
+export default  HeaderStore;

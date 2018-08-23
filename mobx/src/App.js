@@ -6,11 +6,13 @@ import Header from './header';
 @observer
 class App extends Component {
   render() {
-    const {list,header}=this.props.store;
+    const {header}=this.props.store.headerStore;
     return (
       <div> 
+        {
+          console.log(this.props)
+        }
         <Header />
-        {list}
         <span>
           {header}
         </span>

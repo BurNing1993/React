@@ -1,12 +1,8 @@
-import { action, observable } from 'mobx';
+import headerStore from '../header/store';
 
 class Store {
-
-    @observable list = [1,2,3];
-
-    @action
-    changeList(num) {
-        this.list.unshift(num);
+    constructor() {
+        this.headerStore = new headerStore()
     }
 }
 export default  new Store();
