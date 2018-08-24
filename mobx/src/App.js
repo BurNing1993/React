@@ -5,17 +5,25 @@ import Header from './header';
 @inject("store")
 @observer
 class App extends Component {
+  constructor(){
+    super();
+    this.handleClick=this.handleClick.bind(this);
+  }
+
+  handleClick(){
+    this.props.store.addCount(333);
+  }
   render() {
-    const {header}=this.props.store.headerStore;
+    const {count} =this.props.store;
     return (
       <div> 
-        {
-          console.log(this.props)
-        }
         <Header />
-        <span>
-          {header}
-        </span>
+        <div>
+          {
+            count
+          }
+        </div>
+        <button onClick={this.handleClick}>BUTTON</button>
       </div>
     );
   }
