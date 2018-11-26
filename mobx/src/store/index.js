@@ -1,3 +1,5 @@
+import { action, observable, computed, autorun } from 'mobx';
+
 import headerStore from '../header/store';
 import { action, observable } from 'mobx';
 
@@ -6,11 +8,23 @@ class Store {
         this.headerStore = new headerStore()
     }
 
-    @observable list=[1,3];
-
-    @action.bound addItem(num){
-        this.list.push(num);
+    @observable count = 0;
+    @observable list = [2, 3];
+    @computed get listLength() {
+        return this.list.length;
     }
-    
+    @action addItem() {
+        this.list.push(22)
+    }
+
+    @action addCount(num){
+        this.count+=num;
+    }
 }
-export default  new Store();
+const store = new Store();
+autorun(() => console.log(store.count));
+
+// setInterval(()=>{
+//     store.addCount(); 
+// },5000)
+export default store;

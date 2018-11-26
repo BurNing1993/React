@@ -3,7 +3,11 @@
 
     http://placehold.it/820x230
 
->init a ReactApp
+>[Create React App](https://facebook.github.io/create-react-app/)
+
+    npx create-react-app my-app
+    cd my-app
+    npm start
 
     (npm install -g create-react-app)
     create-react-app my-app

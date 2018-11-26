@@ -1,30 +1,28 @@
 {
-  "name": "koa2-tutorial",
+  "name": "koa",
   "version": "1.0.0",
-  "description": "> 正是因为中间件的扩展性才使得 `Koa` 的代码简单灵活。",
+  "description": "koa ",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "dev": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BruceCham/koa2-tutorial.git"
-  },
-  "author": "",
+  "keywords": [
+    "koa"
+  ],
+  "author": "Joey",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BruceCham/koa2-tutorial/issues"
-  },
-  "homepage": "https://github.com/BruceCham/koa2-tutorial#readme",
   "dependencies": {
-    "ip": "^1.1.5",
-    "knex": "^0.15.2",
-    "koa": "^2.3.0",
-    "koa-bodyparser": "^4.2.0",
-    "koa-nunjucks-2": "^3.0.2",
-    "koa-router": "^7.2.1",
-    "koa-static": "^4.0.1",
-    "log4js": "^3.0.4",
-    "mysql": "^2.16.0"
+    "koa": "^2.6.2",
+    "log4js": "^3.0.6"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
   }
 }

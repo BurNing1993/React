@@ -7,18 +7,25 @@ import DevTools from 'mobx-react-devtools'
 @inject("store")
 @observer
 class App extends Component {
+  constructor(){
+    super();
+    this.handleClick=this.handleClick.bind(this);
+  }
+
+  handleClick(){
+    this.props.store.addCount(333);
+  }
   render() {
-    const { header } = this.props.store.headerStore;
-    const { list } = this.props.store;
+    const {count} =this.props.store;
     return (
-      <div>
+      <div> 
         <Header />
-        {list.map((item,index) => (<div key={index}>{item}</div>))}
-        <span>
-          {header}
-        </span>
-        <button onClick={this.props.store.addItem(44)}>ADD</button>
-        <DevTools />
+        <div>
+          {
+            count
+          }
+        </div>
+        <button onClick={this.handleClick}>BUTTON</button>
       </div>
     );
   }
