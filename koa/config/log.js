@@ -1,34 +1,30 @@
 const path = require('path')
 
-// 错误日志输出完整路径
-const errorLogPath = path.resolve(__dirname, '../logs/error/error')
-
-// 响应日志输出完整路径
-const responseLogPath = path.resolve(__dirname, '../logs/response/response')
-
-module.exports = {
-  'appenders':
-    [
-      // 错误日志
-      {
-        'category': 'errorLogger', // logger名称
-        'type': 'dateFile', // 日志类型
-        'filename': errorLogPath, // 日志输出位置
-        'alwaysIncludePattern': true, // 是否总是有后缀名
-        'pattern': '-yyyy-MM-dd-hh.log' // 后缀，每小时创建一个新的日志文件
+// log4js config
+module.exports =
+  {
+    appenders: {
+      error: {
+        type: 'file', // 日志类型
+        category: 'errLogger', // 日志名称
+        filename: path.join(__dirname, '../logs') + 'error.log', // 日志输出位置，当目录文件或文件夹不存在时自动创建
+        maxLogSize: 104800, // 文件最大存储空间
+        backups: 100 // 当文件内容超过文件存储空间时，备份文件的数量
       },
-      // 响应日志
-      {
-        'category': 'resLogger',
-        'type': 'dateFile',
-        'filename': responseLogPath,
-        'alwaysIncludePattern': true,
-        'pattern': '-yyyy-MM-dd-hh.log'
+      response: {
+        type: 'dateFile',
+        category: 'resLogger',
+        filename: path.join(__dirname, '../logs') + 'response.log',
+        pattern: 'yyyy-MM-dd.log', // 日志输出模式
+        alwaysIncludePattern: true,
+        maxLogSize: 104800,
+        backups: 100
       }
-    ],
-  'levels': // 设置logger名称对应的的日志等级
-    {
-      'errorLogger': 'ERROR',
-      'resLogger': 'ALL'
-    }
-}
+    },
+    categories: {
+      error: { appenders: ['error'], level: 'error' },
+      response: { appenders: ['response'], level: 'info' },
+      default: { appenders: ['response'], level: 'info' }
+    },
+    replaceConsole: true
+  }

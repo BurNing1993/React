@@ -1,33 +1,23 @@
-const log4js =require('log4js')
+const log4js = require('log4js')
+// log4js.js
+const { formatError, formatRes } = require('./formatter')
 
-const log_config=require('../../config/log')
-
-// log格式化
-const {formatRes,  formatError, formatReqLog} =require('./formatter')
-
-
-//加载配置文件
-log4js.configure(log_config)
-
-
-const errorLogger = log4js.getLogger('errorLogger');
-const resLogger = log4js.getLogger('resLogger');
-
-const logError=function (ctx,err,resTime) {
-  if (ctx&&err) {
-    console.log(formatError(ctx, err ,resTime))
+let errorLogger = log4js.getLogger('error')
+let responseLogger = log4js.getLogger('response')
+// 封装错误日志
+const errLogger = (ctx, error, resTime) => {
+  if (ctx && error) {
+    errorLogger.error(formatError(ctx, error, resTime))
   }
 }
-
-
-//封装响应日志
-const logResponse = function (ctx, resTime) {
+// 封装响应日志
+const resLogger = (ctx, resTime) => {
   if (ctx) {
-      resLogger.info(formatRes(ctx, resTime));
+    responseLogger.info(formatRes(ctx, resTime))
   }
 }
 
-module.exports={
-  logError,
-  logResponse
+module.exports = {
+  errLogger,
+  resLogger
 }
