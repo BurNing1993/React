@@ -2,6 +2,10 @@ const log4js = require('log4js')
 // log4js.js
 const { formatError, formatRes } = require('./formatter')
 
+const logConfig = require('../../config/log')
+
+log4js.configure(logConfig)
+
 let errorLogger = log4js.getLogger('error')
 let responseLogger = log4js.getLogger('response')
 // 封装错误日志

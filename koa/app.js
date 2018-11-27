@@ -6,7 +6,6 @@ const { errLogger, resLogger } = require('./middleware/log')
 const { port } = require('./config')
 
 // log
-
 app.use(async (ctx, next) => {
   const start = new Date()
   await next()
