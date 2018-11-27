@@ -10,6 +10,7 @@ const formatRes = (ctx, costTime) => {
   let url = ctx.url
   let body = ctx.request.body
   let response = ctx.response
-  return { method, url, body, costTime, response }
+  let userAgent = ctx.header.userAgent
+  return { method, url, body, costTime, response, userAgent }
 }
 module.exports = { formatError, formatRes }
