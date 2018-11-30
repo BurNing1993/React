@@ -1,12 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { Row, Col} from "antd";
+
+import WrappedNormalLoginForm from './WrappedNormalLoginForm.js'
+import './login.css'
 
 class Login extends Component {
-   render() {
-   return (
-      <div>
-       Login
-      </div>
+  handleLogin(){
+    this.props.history.push('/home')
+  }
+  render() {
+    return (
+      <Row>
+        <Col xs={2} sm={4} md={6} lg={8} xl={10}>
+        </Col>
+        <Col xs={20} sm={16} md={12} lg={8} xl={4}>
+          <WrappedNormalLoginForm handleLogin={this.handleLogin.bind(this)}/>
+        </Col>
+        <Col xs={2} sm={4} md={6} lg={8} xl={10}>
+        </Col>
+      </Row>
     );
   }
 }
- export default Login;
+
+export default Login;

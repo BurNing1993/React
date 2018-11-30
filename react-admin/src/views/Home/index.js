@@ -55,13 +55,7 @@ class Home extends Component {
             }}
           >
             <Switch>
-              {/* <Route path={`${match.url}/content`} exact  component={Contents} /> */}
-              {/* <Route path="/content" exact component={Contents} /> */}
-
-              <Route
-                path={`${match.path}/content`}
-                component={Contents}
-              />
+              <Route path={match.path} exact component={Contents} />
             </Switch>
           </Content>
         </Layout>
