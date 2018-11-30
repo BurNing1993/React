@@ -3,7 +3,7 @@ import {Switch, Route} from 'react-router-dom'
 import {Header,Content,Footer} from './style'
 
 import User from '../User'
-import Data from '../Data'
+import Data from '../Data'   
 
 class Layout extends Component {
     
