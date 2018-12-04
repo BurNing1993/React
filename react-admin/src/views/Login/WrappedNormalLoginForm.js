@@ -15,7 +15,6 @@ class NormalLoginForm extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const { handleLogin } = this.props;
-    console.log(this.props)
     return (
       <Form onSubmit={e=>{
         e.preventDefault();
@@ -52,7 +51,7 @@ class NormalLoginForm extends Component {
             valuePropName: "checked",
             initialValue: true
           })(<Checkbox>Remember me</Checkbox>)}
-          <a className="login-form-forgot" href="">
+          <a className="login-form-forgot" href="https://github.com">
             Forgot password
           </a>
           <Button
@@ -62,7 +61,7 @@ class NormalLoginForm extends Component {
           >
             Log in
           </Button>
-          Or <a href="">register now!</a>
+          Or <a href="https://github.com">register now!</a>
         </FormItem>
       </Form>
     );

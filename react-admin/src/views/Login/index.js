@@ -14,6 +14,9 @@ class Login extends Component {
         <Col xs={2} sm={4} md={6} lg={8} xl={10}>
         </Col>
         <Col xs={20} sm={16} md={12} lg={8} xl={4}>
+          <div>
+            Login
+          </div>
           <WrappedNormalLoginForm handleLogin={this.handleLogin.bind(this)}/>
         </Col>
         <Col xs={2} sm={4} md={6} lg={8} xl={10}>

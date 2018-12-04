@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import { Provider } from "react-redux";
 
@@ -10,8 +10,7 @@ import Login from "./views/Login";
 import Page404 from "./views/404";
 import "./App.scss";
 
-class App extends Component {
-  render() {
+function App() {
     return (
       <Provider store={store}>
         <Router>
@@ -25,7 +24,6 @@ class App extends Component {
         </Router>
       </Provider>
     );
-  }
 }
 
 export default App;
