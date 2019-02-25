@@ -26,9 +26,9 @@
             "class $1 extends Component {",
             "   render() {",
             "   return (",
-            "      <div>"
-            "       $1"
-            "      </div>"
+            "      <div>",
+            "       $1",
+            "      </div>",
             "    );"
             "  }",
             "}",
@@ -65,6 +65,22 @@
                 ""
             ],
             "description": "Log output to console"
+        }
+    }
+
+>VScode react-function-component snippets
+
+    {
+        "Print to console": {
+            "prefix": "react-function-component",
+            "body": [
+                "import React from 'react';",
+                "",
+                "export default function $1(props){",
+                "    return <div>$1</div>",
+                "$2",
+            ],
+            "description": "react function component"
         }
     }
 
