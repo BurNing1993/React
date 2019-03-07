@@ -19,6 +19,7 @@ export const login = (accout, password) => {
 				dispatch(changeLogin())
 			}else {
 				alert('登陆失败')
+				
 			}
 		})
 	}
