@@ -1,7 +1,6 @@
 import { action, observable, computed, autorun } from 'mobx';
 
 import headerStore from '../header/store';
-import { action, observable } from 'mobx';
 
 class Store {
     constructor() {

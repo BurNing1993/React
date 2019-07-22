@@ -26,6 +26,7 @@ class App extends Component {
           }
         </div>
         <button onClick={this.handleClick}>BUTTON</button>
+        <DevTools/>
       </div>
     );
   }
