@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button,message } from 'antd';
+import { Button, message } from 'antd';
 
 const UseState: React.FC = () => {
 
@@ -14,7 +14,7 @@ const UseState: React.FC = () => {
     }
   }
 
-  
+
   return (
     <div>
       <div className="example">
@@ -22,11 +22,6 @@ const UseState: React.FC = () => {
         <Button type="primary" onClick={() => { setCount(count + 1) }}>+1</Button>
         <Button type="primary" onClick={() => { minus() }}>-1</Button>
       </div>
-      <code>
-
-        &lt;p&gt;Sample text here...&lt;/p&gt; <br />
-        &lt;p&gt;And another line of sample text here...&lt;/p&gt;
-      </code>
     </div>
   )
 }
