@@ -1,0 +1,9 @@
+ #app{
+   width: 100%;
+   min-height: calc(100vh - 10px);
+ }
+
+ .dark{
+   background-color: #2f3542;
+   color: #f1f2f6;
+ }
