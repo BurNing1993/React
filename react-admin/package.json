@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.10.9",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "immutable": "^4.0.0-rc.12",
     "node-sass": "^4.10.0",
     "react": "^16.6.3",
