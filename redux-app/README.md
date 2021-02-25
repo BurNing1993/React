@@ -1,68 +1,157 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React-Redux-App
 
-## Available Scripts
+## deps
 
-In the project directory, you can run:
+```sh
+yarn add redux react-redux  redux-thunk
+```
 
-### `npm start`
+```sh
+yarn add -D @types/react-redux
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## store
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### store/index.ts
 
-### `npm test`
+```ts
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import thunk from "redux-thunk";
+import counterReducer from "./counter/reducer";
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+const rootReducer = combineReducers({
+  counter: counterReducer,
+});
 
-### `npm run build`
+export type RootState = ReturnType<typeof rootReducer>;
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+export default function configStore() {
+  const store = createStore(rootReducer, applyMiddleware(thunk));
+  return store;
+}
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### store/counter/types.ts
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```ts
+//  constants
+export const ADD = 'ADD'
+export const MINUS = 'MINUS'
 
-### `npm run eject`
+// state
+export interface CounterState {
+  num: number;
+}
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+// action
+interface AddAction {
+  type: typeof ADD;
+}
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+interface MinusAction {
+  type: typeof MINUS
+}
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+export type CounterActionTypes = AddAction | MinusAction;
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### store/counter/reducer.ts
 
-## Learn More
+```ts
+import { ADD, MINUS, CounterState, CounterActionTypes } from "./types";
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+const INITIAL_STATE: CounterState = {
+  num: 0
+};
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+export default function counter(
+  state = INITIAL_STATE,
+  action: CounterActionTypes
+): CounterState {
+  switch (action.type) {
+    case ADD:
+      return {
+        ...state,
+        num: state.num + 1
+      };
+    case MINUS:
+      return {
+        ...state,
+        num: state.num - 1
+      };
+    default:
+      return state;
+  }
+}
+```
 
-### Code Splitting
+### store/counter/actions.ts
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```ts
+import { Action } from 'redux'
+import { ThunkAction } from 'redux-thunk'
+import { RootState } from '..'
+import {
+  ADD,
+  MINUS,
+  CounterActionTypes
+} from './types'
 
-### Analyzing the Bundle Size
+export const add = (): CounterActionTypes => {
+  return {
+    type: ADD
+  }
+}
+export const minus = (): CounterActionTypes => {
+  return {
+    type: MINUS
+  }
+}
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+// 异步的 action
+export function asyncAdd () :ThunkAction<void,RootState,unknown,Action<any>>{
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(add())
+    }, 1000)
+  }
+}
+```
 
-### Making a Progressive Web App
+## Components
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+### App.tsx
 
-### Advanced Configuration
+```ts
+import React from "react";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import configStore, { RootState } from "./store";
+import { add, asyncAdd, minus } from "./store/counter/actions";
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+const store = configStore();
 
-### Deployment
+const Counter = () => {
+  const counter = useSelector<RootState>(
+    (state) => state.counter.num
+  ) as number;
+  const dispatch = useDispatch();
+  return (
+    <div>
+      <span>{counter}</span>
+      <button onClick={() => dispatch(add())}>+</button>
+      <button onClick={() => dispatch(minus())}>+</button>
+      <button onClick={() => dispatch(asyncAdd())}>Async+(2s)</button>
+    </div>
+  );
+};
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+function App() {
+  return (
+    <Provider store={store}>
+      <Counter />
+    </Provider>
+  );
+}
 
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+export default App;
+```
